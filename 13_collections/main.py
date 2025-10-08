@@ -1,7 +1,10 @@
-# collection = a single "variable" used to store multiple values
-#              List  = []  ordered,   mutable,                        duplicates allowed
-#              Set   = {}  unordered, immutable (but can add/remove), duplicates NOT allowed
-#              Tuple = ()  ordered,   immutable,                      duplicates allowed
+# collection    = a single "variable" used to store multiple values
+#                 List  = []  ordered,   mutable,                        duplicates allowed
+#                 Set   = {}  unordered, immutable (but can add/remove), duplicates NOT allowed
+#                 Tuple = ()  ordered,   immutable,                      duplicates allowed
+# 2D collection = a collection that contains other collections as its elements
+#                 useful for representing tables, grids, matrices, etc.
+#                 access elements using two indexes [row][column]
 
 # List []
 print("--------- LIST [] ---------")
@@ -91,3 +94,30 @@ print(f"Is Jose there?: {'Jose' in names}")
 print(f"David is at index {names.index('David')}")
 print(f"Number of times Jesus appears: {names.count('Jesus')}")
 
+# 2d collections
+# example 1: 2d lists
+fruits = ["apple", "orange", "banana", "coconut"]
+vegetables = ["carrot", "potato", "spinach"]
+proteins = ["chicken", "beef", "tuna"]
+groceries = [fruits, vegetables, proteins]
+
+print(groceries[0])  # fruits list
+print(groceries[1])  # vegetables list
+print(groceries[2])  # proteins list
+
+print(groceries[0][0])  # fruits' first element
+print(groceries[0][1])  # fruits' second element
+print(groceries[1][1])  # vegetables' second element
+
+# example 2: 2d tuples
+num_pad = ((1, 2, 3),
+           (4, 5, 6),
+           (7, 8, 9),
+           ("*", 0, "#"))
+
+print("-----")
+for row in num_pad:
+    for element in row:
+        print(element, end=" ")
+    print()  # line break
+print("-----")
