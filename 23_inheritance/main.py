@@ -8,6 +8,9 @@
 # method overriding      = when a child class defines a method with the same name as one in the parent class
 #                          the child's version replaces (overrides) the parent's version when called
 #                          allows the child to customize or extend parent behavior
+# polymorphism           = the ability for different classes to be used interchangeably, even if they behave differently
+#                          an object could be treated of the same type as its parent class
+#                          isinstance()
 
 # inheritance
 from animal import *
@@ -39,16 +42,32 @@ cat.hunt()
 # super()
 from shape import *
 
-circle = Circle(color="red", is_filled=True, radius=5)
-square = Square(color="blue", is_filled=False, side=6)
-triangle = Triangle(color="yellow", is_filled=True, base=7, height=8)
+circle = Circle(color="red", radius=5)
+square = Square(color="blue", side=6)
+triangle = Triangle(color="yellow", base=7, height=8)
+marble = Marble(color="purple", pattern="striped")
 
 print(circle.color)
-print(square.is_filled)
+print(square.color)
 print(triangle.base)
 print(triangle.height)
+print(marble.color)
+print(marble.pattern)
 
 # overriding methods
 circle.describe()  # uses parent's method
 square.describe()  # uses parent's method
 triangle.describe()  # uses child's method (overriden)
+marble.describe()  # uses child's method (overriden)
+
+# polymorphism
+shapes = [Shape("orange"), circle, square, triangle, marble]
+
+for item in shapes:
+    print("---------------------")
+    item.describe()
+    print(f"Is it a Shape?: {isinstance(item, Shape)}")
+    print(f"Is it a Circle?: {isinstance(item, Circle)}")
+    print(f"Is it a Square?: {isinstance(item, Square)}")
+    print(f"Is it a Triangle?: {isinstance(item, Triangle)}")
+    print(f"Is it a Marble?: {isinstance(item, Marble)}")
